@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "이웃과 안부를 나누고, 급할 때 도움을 부르는 서비스",
     start_url: "/",
     display: "standalone",
-    background_color: "#f3f8f2",
-    theme_color: "#1f7a4d",
+    background_color: "#f4f6ec",
+    theme_color: "#f4f6ec",
     icons: [
       { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { src: "/icon-512.png", sizes: "512x512", type: "image/png" },

@@ -1,4 +1,4 @@
-// 디자인시스템 "오늘도 안녕"의 선 아이콘 (선 두께 2.2, 둥근 끝, 24칸 격자). 글자 색(currentColor)을 따라가요.
+// 디자인시스템 "오늘도 안녕"의 굵은 선 아이콘 (선 두께 2.4, 둥근 끝, 24칸 격자). 글자 색(currentColor)을 따라가요.
 const ICONS = {
   home: <path d="M4 11l8-7 8 7v8.5a1 1 0 01-1 1h-4v-6h-6v6H5a1 1 0 01-1-1V11z" />,
   neighbors: (
@@ -28,6 +28,10 @@ const ICONS = {
     </>
   ),
   siren: <path d="M7 18v-6a5 5 0 0110 0v6M4 18h16v3H4zM12 3v2M4.5 6l1.5 1.2M19.5 6L18 7.2" />,
+  arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
+  back: <path d="M15 5l-7 7 7 7" />,
+  camera: <path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" />,
+  door: <path d="M6 20V5a1 1 0 011-1h10a1 1 0 011 1v15M4 20h16M14.5 12.5v.5" />,
 } as const;
 
 export type IconName = keyof typeof ICONS;
@@ -41,7 +45,7 @@ export function Icon({ name, size = 24, className }: { name: IconName; size?: nu
       height={size}
       fill="none"
       stroke="currentColor"
-      strokeWidth={2.2}
+      strokeWidth={2.4}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}

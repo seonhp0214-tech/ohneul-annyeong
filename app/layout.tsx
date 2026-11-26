@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1f7a4d" },
-    { media: "(prefers-color-scheme: dark)", color: "#14201a" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f6ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#141c16" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -21,14 +21,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ko" className="h-full antialiased">
       <head>
-        {/* 디자인시스템 글꼴: Noto Sans KR */}
+        {/* 디자인시스템 글꼴: IBM Plex Sans KR (굵기 400·500·700) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* 앱 전체(app 폴더)의 공통 화면이라 모든 페이지에 적용돼요. 아래 경고는 pages 폴더용 규칙이라 끕니다. */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"
         />
       </head>
       <body className="min-h-full bg-surface text-ink">{children}</body>
