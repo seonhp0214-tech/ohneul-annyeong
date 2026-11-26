@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ============================================================
+   "오늘도 안녕" 디자인시스템 토큰 (Artifact '오늘도 안녕' > tokens.json 에서 가져온 값)
+   색을 바꾸고 싶으면 아래 값만 고치면 앱 전체가 바뀌어요.
+   ============================================================ */
+:root {
+  --surface: #f3f8f2;        /* 앱 배경 */
+  --surface-raised: #ffffff; /* 카드·입력 칸 */
+  --ink: #17261e;            /* 본문 글자 */
+  --ink-muted: #4a5e53;      /* 보조 글자 */
+  --brand: #1f7a4d;          /* 안심의 색 (주 버튼·헤더) */
+  --on-brand: #ffffff;
+  --brand-deep: #14573a;
+  --brand-soft: #d9f0dc;
+  --sun: #f6c445;
+  --on-sun: #3a2a00;
+  --warn-soft: #fff0c7;      /* 24시간(하루 지남) */
+  --warn-ink: #6b4500;
+  --sos: #c2410c;            /* SOS·48시간 에만 사용 */
+  --on-sos: #ffffff;
+  --sos-soft: #fde4d9;
+  --sos-ink: #9a3412;
+  --line: #d3e0d4;
+  --line-strong: #6f8777;
+  --focus: #0b5cad;
+  --shadow-card-v: 0 4px 16px rgba(23, 38, 30, 0.1);
+}
+
+/* 폰이 어두운 화면 모드일 때 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #14201a;
+    --surface-raised: #1d2c24;
+    --ink: #eef5ef;
+    --ink-muted: #a9bdb0;
+    --brand: #5fcf95;
+    --on-brand: #0c2417;
+    --brand-deep: #8fe0b4;
+    --brand-soft: #2e5240;
+    --warn-soft: #3d3216;
+    --warn-ink: #ffd978;
+    --sos: #ff9a6b;
+    --on-sos: #3a1000;
+    --sos-soft: #43211a;
+    --sos-ink: #ffb596;
+    --line: #34483c;
+    --line-strong: #8aa394;
+    --focus: #8cc4ff;
+    --shadow-card-v: 0 4px 16px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Tailwind 클래스 이름으로 쓸 수 있게 연결 (예: bg-brand, text-ink-muted, rounded-lg, shadow-card) */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-brand: var(--brand);
+  --color-on-brand: var(--on-brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-soft: var(--brand-soft);
+  --color-sun: var(--sun);
+  --color-on-sun: var(--on-sun);
+  --color-warn-soft: var(--warn-soft);
+  --color-warn-ink: var(--warn-ink);
+  --color-sos: var(--sos);
+  --color-on-sos: var(--on-sos);
+  --color-sos-soft: var(--sos-soft);
+  --color-sos-ink: var(--sos-ink);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-focus: var(--focus);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --shadow-card: var(--shadow-card-v);
+  --font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 18px; /* 본문 최소 크기 */
+    line-height: 28px;
+  }
+  /* 키보드·스크린리더 포커스 고리 */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+}
+
+/* 공통 부품: 글자 크기, 버튼, 카드, 칩, 입력 칸 */
+@layer components {
+  .t-display { font: 800 44px/52px var(--font-sans); }
+  .t-title { font: 700 28px/36px var(--font-sans); }
+  .t-heading { font: 700 22px/30px var(--font-sans); }
+  .t-body { font: 400 18px/28px var(--font-sans); }
+  .t-body-strong { font: 700 18px/28px var(--font-sans); }
+  .t-caption { font: 500 15px/22px var(--font-sans); } /* 가장 작은 글자 */
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 56px; min-width: 56px; padding: 0 24px;
+    border-radius: 999px; border: 2px solid transparent;
+    font: 700 20px/28px var(--font-sans); cursor: pointer;
+  }
+  .btn-xl { min-height: 72px; font-size: 28px; line-height: 36px; }
+  .btn-primary { background: var(--brand); color: var(--on-brand); }
+  .btn-primary:active { background: var(--brand-deep); }
+  .btn-secondary { background: var(--surface-raised); color: var(--ink); border-color: var(--line-strong); }
+  .btn-sos { background: var(--sos); color: var(--on-sos); }
+  .btn-dashed { background: transparent; color: var(--ink); border: 2px dashed var(--line-strong); font-size: 18px; }
+
+  .card { background: var(--surface-raised); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 16px; }
+  .card-lg { background: var(--surface-raised); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 16px 24px 24px; }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px;
+    border-radius: 999px; font: 700 18px/28px var(--font-sans);
+  }
+  .chip-ok { background: var(--brand-soft); color: var(--ink); }
+  .chip-warn { background: var(--warn-soft); color: var(--warn-ink); }
+  .chip-bad { background: var(--sos-soft); color: var(--sos-ink); }
+
+  .field {
+    width: 100%; min-height: 56px; padding: 0 16px; border-radius: var(--radius-sm);
+    border: 2px solid var(--line-strong); background: var(--surface-raised); color: var(--ink);
+    font: 400 18px/28px var(--font-sans);
+  }
+  .cell {
+    flex: 1; min-width: 0; height: 64px; border-radius: var(--radius-sm);
+    border: 2px solid var(--line-strong); background: var(--surface-raised);
+    display: flex; align-items: center; justify-content: center; font: 800 28px/1 var(--font-sans);
+  }
+  .cell-active { outline: 2px solid var(--focus); outline-offset: 2px; border-color: var(--focus); }
+  .cell-err { border-color: var(--sos-ink); }
+
+  .demo-note {
+    border: 2px dashed var(--line-strong); border-radius: var(--radius-md); padding: 12px 16px;
+    color: var(--ink-muted); font: 500 15px/22px var(--font-sans);
+  }
+}
