@@ -64,7 +64,7 @@ export default function Onboarding({ actions }: { actions: Actions }) {
           <label htmlFor="nickname" className="t-body-strong">
             부르는 이름
           </label>
-          <input id="nickname" className="field" value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="예: 선희" />
+          <input id="nickname" className="field" value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="예: 민지" />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="dong" className="t-body-strong">
